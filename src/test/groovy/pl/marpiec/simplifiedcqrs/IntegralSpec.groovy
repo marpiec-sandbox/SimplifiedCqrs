@@ -1,5 +1,6 @@
 package pl.marpiec.simplifiedcqrs
 
+import org.slf4j.LoggerFactory
 import pl.marpiec.simplifiedcqrs.event.ChangePasswordEvent
 import pl.marpiec.simplifiedcqrs.event.CreateUserEvent
 import pl.marpiec.simplifiedcqrs.memoryimpl.AggregateStoreCacheMemoryImpl
@@ -9,6 +10,10 @@ import pl.marpiec.simplifiedcqrs.memoryimpl.UIDGeneratorMemoryImpl
 import spock.lang.Specification
 
 class IntegralSpec extends Specification {
+
+    def setup() {
+        LoggerFactory.getLogger(this.getClass()).debug("Test started")
+    }
 
     def "Aggregate can be aquired from AggregateStore"() {
 
