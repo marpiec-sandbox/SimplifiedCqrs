@@ -1,9 +1,5 @@
-package pl.marpiec.simplifiedcqrs.pl.marpiec.simplifiedcqrs
+package pl.marpiec.simplifiedcqrs
 
-import pl.marpiec.simplifiedcqrs.AggregateStore
-import pl.marpiec.simplifiedcqrs.AggregateStoreCache
-import pl.marpiec.simplifiedcqrs.EventStore
-import pl.marpiec.simplifiedcqrs.User
 import pl.marpiec.simplifiedcqrs.event.ChangePasswordEvent
 import pl.marpiec.simplifiedcqrs.event.CreateUserEvent
 import pl.marpiec.simplifiedcqrs.memoryimpl.AggregateStoreCacheMemoryImpl
