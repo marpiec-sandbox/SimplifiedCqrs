@@ -1,4 +1,8 @@
-package pl.marpiec.simplifiedcqrs;
+package pl.marpiec.simplifiedcqrs.internal;
+
+import pl.marpiec.simplifiedcqrs.Aggregate;
+import pl.marpiec.simplifiedcqrs.Event;
+import pl.marpiec.simplifiedcqrs.UID;
 
 public class EventRow {
 

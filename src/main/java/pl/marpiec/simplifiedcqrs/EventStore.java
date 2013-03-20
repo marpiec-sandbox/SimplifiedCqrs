@@ -1,5 +1,7 @@
 package pl.marpiec.simplifiedcqrs;
 
+import pl.marpiec.simplifiedcqrs.internal.EventRow;
+
 import java.util.List;
 
 public interface EventStore {

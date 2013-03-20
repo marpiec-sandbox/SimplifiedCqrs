@@ -2,7 +2,7 @@ package pl.marpiec.simplifiedcqrs.memoryimpl;
 
 import pl.marpiec.simplifiedcqrs.Aggregate;
 import pl.marpiec.simplifiedcqrs.Event;
-import pl.marpiec.simplifiedcqrs.EventRow;
+import pl.marpiec.simplifiedcqrs.internal.EventRow;
 import pl.marpiec.simplifiedcqrs.EventStore;
 import pl.marpiec.simplifiedcqrs.EventStoreListener;
 import pl.marpiec.simplifiedcqrs.UID;

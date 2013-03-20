@@ -6,7 +6,7 @@ import pl.marpiec.simplifiedcqrs.Aggregate;
 import pl.marpiec.simplifiedcqrs.AggregateStore;
 import pl.marpiec.simplifiedcqrs.AggregateStoreCache;
 import pl.marpiec.simplifiedcqrs.AggregateStoreListener;
-import pl.marpiec.simplifiedcqrs.EventRow;
+import pl.marpiec.simplifiedcqrs.internal.EventRow;
 import pl.marpiec.simplifiedcqrs.EventStore;
 import pl.marpiec.simplifiedcqrs.EventStoreListener;
 import pl.marpiec.simplifiedcqrs.UID;
