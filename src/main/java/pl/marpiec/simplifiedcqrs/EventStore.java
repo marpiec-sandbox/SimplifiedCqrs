@@ -10,6 +10,8 @@ public interface EventStore {
 
     void addEventIgnoreVersion(UID userId, UID aggregateId, int expectedVersion, Event<? extends Aggregate> event);
 
+    List<EventRow> getEventsForAggregateFromVersion(Class<? extends Aggregate> aggregateClass, UID id, int fromVersion);
+
     List<EventRow> getEventsForAggregate(Class<? extends Aggregate> aggregateClass, UID id);
 
     List<EventRow> getAllEventsByType(Class<? extends Aggregate> aggregateClass);
