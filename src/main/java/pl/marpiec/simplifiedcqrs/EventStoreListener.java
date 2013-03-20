@@ -1,13 +1,7 @@
 package pl.marpiec.simplifiedcqrs;
 
-/**
- *
- */
-public abstract class EventStoreListener {
+public interface EventStoreListener {
 
-    public void startListeningToEventStore(EventStore eventStore) {
-        eventStore.addListener(this);
-    }
+    void onAggregateChanged(Class<? extends Aggregate> aggregateClass, UID aggregateId);
 
-    public abstract void onAggregateChanged(Class<? extends Aggregate> aggregateClass, UID aggregateId);
 }
