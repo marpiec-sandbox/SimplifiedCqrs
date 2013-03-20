@@ -95,6 +95,12 @@ public class EventStoreMemoryImpl implements EventStore {
 
 
     @Override
+    public List<EventRow> getEventsForAggregateFromVersion(Class<? extends Aggregate> aggregateClass, UID aggregateId, int fromVersion) {
+        List<EventRow> eventsForAggregate = getEventsForAggregate(aggregateClass, aggregateId);
+        return filterEventsByVersionIfNecessary(eventsForAggregate, fromVersion);
+    }
+
+    @Override
     public List<EventRow> getEventsForAggregate(Class<? extends Aggregate> aggregateClass, UID aggregateId) {
         Map<UID, List<EventRow>> eventsForType = eventsByType.get(aggregateClass);
 
@@ -110,6 +116,21 @@ public class EventStoreMemoryImpl implements EventStore {
                     aggregateClass + " and id " +aggregateId+" are defined so aggregate does not exist");
         }
         return eventsForAggregate;
+    }
+
+
+    private List<EventRow> filterEventsByVersionIfNecessary(List<EventRow> eventsForAggregate, int fromVersion) {
+        if(fromVersion > 0) {
+            List<EventRow> filteredEvents = new ArrayList<EventRow>();
+            for (EventRow eventRow: eventsForAggregate) {
+                if(eventRow.getExpectedVersion() >= fromVersion) {
+                    filteredEvents.add(eventRow);
+                }
+            }
+            return filteredEvents;
+        } else {
+            return eventsForAggregate;
+        }
     }
 
     @Override

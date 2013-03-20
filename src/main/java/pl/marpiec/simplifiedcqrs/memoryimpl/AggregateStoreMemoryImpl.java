@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class AggregateStoreMemoryImpl extends EventStoreListener implements AggregateStore {
+public class AggregateStoreMemoryImpl implements EventStoreListener, AggregateStore {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AggregateStoreMemoryImpl.class);
     private final EventStore eventStore;
@@ -28,7 +28,8 @@ public class AggregateStoreMemoryImpl extends EventStoreListener implements Aggr
     public AggregateStoreMemoryImpl(EventStore eventStore, AggregateStoreCache aggregateStoreCache) {
         this.eventStore = eventStore;
         this.aggregateStoreCache = aggregateStoreCache;
-        startListeningToEventStore(eventStore);
+
+        eventStore.addListener(this);
     }
 
     @Override
@@ -79,7 +80,9 @@ public class AggregateStoreMemoryImpl extends EventStoreListener implements Aggr
                 aggregate = aggregateClass.newInstance();
                 aggregate.setId(id);
                 aggregate.setVersion(0);
-                aggregateStoreCache.put(aggregate);
+                if (aggregateStoreCache != null) {
+                    aggregateStoreCache.put(aggregate);
+                }
                 if (LOGGER.isDebugEnabled()) {
                     LOGGER.debug("Aggregate instance created [type:" + aggregateClass.getName() + ", id:" + id + "]");
                 }
