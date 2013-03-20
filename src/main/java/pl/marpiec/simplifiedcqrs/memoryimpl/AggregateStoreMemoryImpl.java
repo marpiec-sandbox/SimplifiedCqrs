@@ -80,11 +80,11 @@ public class AggregateStoreMemoryImpl implements EventStoreListener, AggregateSt
                 aggregate = aggregateClass.newInstance();
                 aggregate.setId(id);
                 aggregate.setVersion(0);
-                if (aggregateStoreCache != null) {
-                    aggregateStoreCache.put(aggregate);
-                }
                 if (LOGGER.isDebugEnabled()) {
                     LOGGER.debug("Aggregate instance created [type:" + aggregateClass.getName() + ", id:" + id + "]");
+                }
+                if (aggregateStoreCache != null) {
+                    aggregateStoreCache.put(aggregate);
                 }
             }
             return aggregate;
